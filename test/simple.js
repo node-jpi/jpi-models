@@ -10,32 +10,32 @@ test('simple test', function (t) {
 
   t.equal(Object.keys(model).length, 4, '`model` has the correct number of keys')
 
-  // Handle update event
-  model.on('update', 'str', function (e) {
+  // Handle change event
+  model.on('change', 'str', function (e) {
     console.log(e.event, e.path, e.oldValue, e.newValue)
     count++
   })
 
-  // Handle update event
-  model.on('update', 'num', function (e) {
+  // Handle change event
+  model.on('change', 'num', function (e) {
     console.log(e.event, e.path, e.oldValue, e.newValue)
     count++
   })
 
-  // Handle update event
-  model.on('update', 'bool', function (e) {
+  // Handle change event
+  model.on('change', 'bool', function (e) {
     console.log(e.event, e.path, e.oldValue, e.newValue)
     count++
   })
 
-  // Handle update event
-  model.on('update', 'int', function (e) {
+  // Handle change event
+  model.on('change', 'int', function (e) {
     console.log(e.event, e.path, e.result)
     count++
   })
 
-  // Handle update event
-  model.on('change', function (e) {
+  // Handle change event
+  model.on('update', function (e) {
     console.log(e.event, e.path)
     count++
   })

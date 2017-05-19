@@ -1,74 +1,9 @@
-# jpi-models
+'use strict'
 
-Create observable models from JSON Schema.
+const test = require('tape')
+const schema = require('./readme.json')
+const Model = require('..')
 
-Tiny library that takes a schema and produces a model that emits events when its data changes. Event handler registration supports a selector expression like DOM delegation where regex can be used to match dot notation paths.
-
-Useful for helping to build front end browser applications where data changes need to monitored to perform UI updates.
-
-## Installation
-
-`npm i jpi-models`
-
-```js
-const Model = require('jpi-models')
-```
-
-## Example
-
-Take a JSON schema:
-
-```json
-{
-  "title": "Person",
-  "type": "object",
-  "properties": {
-    "firstName": { "type": "string" },
-    "lastName": { "type": "string" },
-    "address": {
-      "title": "Address",
-      "type": "object",
-      "properties": {
-        "line1": { "type": "string" },
-        "line2": { "type": "string" },
-        "postcode": { "type": "string" },
-        "latLong": {
-          "title": "Lat Long",
-          "type": "object",
-          "properties": {
-            "lat": { "type": "number" },
-            "long": { "type": "number" }
-          }
-        }
-      }
-    },
-    "age": {
-      "type": "integer",
-      "description": "Age in years",
-      "minimum": 0
-    },
-    "comments": {
-      "type": "array",
-      "items": {
-        "title": "Comment",
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string"
-          },
-          "body": {
-            "type": "string"
-          }
-        }
-      }
-    }
-  }
-}
-```
-
-Create a model 
-
-```js
 test('readme test', function (t) {
   const model = Model(schema)
   let count = 0
@@ -150,15 +85,3 @@ test('readme test', function (t) {
 
   t.end()
 })
-```
-
-## Known Shortcomings
-
-This library was written to serve a specific purpose in a demo application.
-There are probably loads of issues with it but it's only supposed to be a proof of concept.
-
-The library itself is only a few lines of code and if you stay within it's capabilities outlined in the `test` folder you should be fine.
-
-Some known issues:
-
-## Data links & attatchments

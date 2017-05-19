@@ -1,5 +1,5 @@
 {
-  "title": "Person",
+  "title": "Demo",
   "type": "object",
   "properties": {
     "str": {

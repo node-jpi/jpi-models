@@ -8,14 +8,14 @@ test('regex test', function (t) {
   const model = Model(schema)
   let count = 0
 
-  // Handle update to any path that starts with `address`
-  model.on('update', /^address/, function (e) {
+  // Handle change to any path that starts with `address`
+  model.on('change', /^address/, function (e) {
     console.log(e.event, e.path, e.oldValue, e.newValue)
     count++
   })
 
-  // Handle update to any path that starts with `address.latLong`
-  model.on('update', /^address.latLong/, function (e) {
+  // Handle change to any path that starts with `address.latLong`
+  model.on('change', /^address.latLong/, function (e) {
     console.log(e.event, e.path, e.oldValue, e.newValue)
     count++
   })

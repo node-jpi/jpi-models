@@ -95,7 +95,7 @@ module.exports = function (fn) {
    * Special update function since we can't detect
    * assignment by index e.g. arr[0] = 'something'
    */
-  arr.update = function (index, value) {
+  arr.set = function (index, value) {
     const oldValue = arr[index]
     const newValue = arr[index] = value
 

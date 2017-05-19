@@ -1,0 +1,45 @@
+{
+  "title": "Person",
+  "type": "object",
+  "properties": {
+    "firstName": { "type": "string" },
+    "lastName": { "type": "string" },
+    "address": {
+      "title": "Address",
+      "type": "object",
+      "properties": {
+        "line1": { "type": "string" },
+        "line2": { "type": "string" },
+        "postcode": { "type": "string" },
+        "latLong": {
+          "title": "Lat Long",
+          "type": "object",
+          "properties": {
+            "lat": { "type": "number" },
+            "long": { "type": "number" }
+          }
+        }
+      }
+    },
+    "age": {
+      "type": "integer",
+      "description": "Age in years",
+      "minimum": 0
+    },
+    "comments": {
+      "type": "array",
+      "items": {
+        "title": "Comment",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -20,8 +20,8 @@ test('nested test', function (t) {
     count++
   })
 
-  // Handle all change events
-  model.on('change', function (e) {
+  // Handle all update events
+  model.on('update', function (e) {
     console.log(e.event, e.path, e.result || e.newValue)
     count++
   })

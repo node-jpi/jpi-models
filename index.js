@@ -64,7 +64,7 @@ function model (schema) {
               result: result
             })
 
-            emit('change', null, {
+            emit('update', null, {
               event: event,
               key: key,
               path: name,
@@ -92,8 +92,8 @@ function model (schema) {
               val = value
 
               const name = path ? path + '.' + key : key
-              emit('update', name, {
-                event: 'update',
+              emit('change', name, {
+                event: 'change',
                 key: key,
                 path: name,
                 context: ctx,
@@ -101,8 +101,8 @@ function model (schema) {
                 newValue: value
               })
 
-              emit('change', null, {
-                event: 'change',
+              emit('update', null, {
+                event: 'update',
                 key: key,
                 path: name,
                 context: ctx,
@@ -118,6 +118,8 @@ function model (schema) {
   }
 
   apply(schema, root, '')
+
+  Object.freeze(root)
 
   return root
 }
