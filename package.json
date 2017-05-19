@@ -1,0 +1,31 @@
+{
+  "name": "jpi-models",
+  "version": "0.0.1",
+  "description": "Create observable models from JSON Schema",
+  "keywords": [
+    "json schema",
+    "observable models",
+    "data events",
+    "delegation"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint && npm run unit",
+    "lint": "standard",
+    "unit": "tape test/*.js"
+  },
+  "author": "davidjamesstone",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "standard": "10.0.2",
+    "tape": "4.6.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/node-jpi/jpi-models"
+  },
+  "bugs": {
+    "url": "https://github.com/node-jpi/jpi-models/issues"
+  }
+}

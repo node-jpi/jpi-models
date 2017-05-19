@@ -1,0 +1,35 @@
+{
+  "title": "Nested",
+  "type": "object",
+  "properties": {
+    "comments": {
+      "type": "array",
+      "items": {
+        "title": "Comment",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "title": "Notes",
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": ["firstName", "lastName", "latLong"],
+  "additionalProperties": false
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Person",
+  "type": "object",
+  "properties": {
+    "str": {
+      "type": "string"
+    },
+    "num": {
+      "type": "number"
+    },
+    "bool": {
+      "type": "boolean"
+    },
+    "int": {
+      "type": "number",
+      "format": "integer"
+    }
+  },
+  "required": ["firstName"],
+  "additionalProperties": false
+}
