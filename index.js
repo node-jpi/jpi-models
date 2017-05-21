@@ -38,6 +38,45 @@ function model (schema) {
     }
   }
 
+  function defineProperty (prop, ctx, key, path) {
+    let val = prop.default
+
+    Object.defineProperty(ctx, key, {
+      get () {
+        return val
+      },
+      set (value) {
+        const oldValue = val
+
+        if (value === oldValue) {
+          return
+        }
+
+        val = value
+
+        const name = path ? path + '.' + key : key
+        emit('change', name, {
+          event: 'change',
+          key: key,
+          path: name,
+          context: ctx,
+          oldValue: oldValue,
+          newValue: value
+        })
+
+        emit('update', null, {
+          event: 'update',
+          key: key,
+          path: name,
+          context: ctx,
+          oldValue: oldValue,
+          newValue: value
+        })
+      },
+      enumerable: true
+    })
+  }
+
   function apply (schema, ctx, path) {
     if (schema.properties) {
       paths.push(path)
@@ -72,46 +111,17 @@ function model (schema) {
               result: result
             })
           })
+
           child.create = function () {
             const item = {}
             apply(prop.items, item, path ? path + '.' + key : key)
             paths.pop()
             return item
           }
+
           ctx[key] = child
         } else {
-          let val = prop.default
-
-          Object.defineProperty(ctx, key, {
-            get () {
-              return val
-            },
-            set (value) {
-              const oldValue = val
-
-              val = value
-
-              const name = path ? path + '.' + key : key
-              emit('change', name, {
-                event: 'change',
-                key: key,
-                path: name,
-                context: ctx,
-                oldValue: oldValue,
-                newValue: value
-              })
-
-              emit('update', null, {
-                event: 'update',
-                key: key,
-                path: name,
-                context: ctx,
-                oldValue: oldValue,
-                newValue: value
-              })
-            },
-            enumerable: true
-          })
+          defineProperty(prop, ctx, key, path)
         }
       }
     }

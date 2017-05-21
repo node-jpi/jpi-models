@@ -97,9 +97,14 @@ module.exports = function (fn) {
    */
   arr.set = function (index, value) {
     const oldValue = arr[index]
+
+    if (value === oldValue) {
+      return
+    }
+
     const newValue = arr[index] = value
 
-    fn('update', arr, {
+    fn('chnage', arr, {
       index: index,
       value: newValue,
       oldValue: oldValue
