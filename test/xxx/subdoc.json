@@ -1,0 +1,59 @@
+{
+  "title": "Demo",
+  "type": "object",
+  "properties": {
+    "str": {
+      "type": "string"
+    },
+    "num": {
+      "type": "number"
+    },
+    "bool": {
+      "type": "boolean"
+    },
+    "int": {
+      "type": "number",
+      "format": "integer",
+      "default": 42
+    },
+    "address": {
+      "title": "Address",
+      "type": "object",
+      "properties": {
+        "line1": {
+          "type": "string"
+        },
+        "line2": {
+          "type": "string"
+        },
+        "postcode": {
+          "type": "string"
+        },
+        "latLong": {
+          "title": "Lat Long",
+          "type": "object",
+          "properties": {
+            "lat": {
+              "type": "number"
+            },
+            "long": {
+              "type": "number"
+            }
+          },
+          "required": ["lat", "long"]
+        }
+      },
+      "default": {
+        "line1": "298 Stretford Road",
+        "line2": "Hulme",
+        "postcode": "M15 5TN",
+        "latLong": {
+          "lat": 1,
+          "long": 1
+        }
+      }
+    }
+  },
+  "required": ["firstName"],
+  "additionalProperties": false
+}
